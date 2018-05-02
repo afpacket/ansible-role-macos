@@ -1,0 +1,36 @@
+# Macos
+- block:
+    - name: dot files
+      copy:
+        src: "{{ item }}"
+        dest: "/Users/{{ ansible_env.USER }}/.{{ item }}"
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0600
+      with_items:
+        - bash_profile
+        - terraformrc
+
+    - name: ssh_config
+      copy:
+        src: ssh_config 
+        dest: "/Users/{{ ansible_env.USER }}/.ssh/config"
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0600
+
+    - name: packages - pip3
+      pip:
+        name: "{{ item }}"
+        executable: pip3
+        state: present
+      with_items:
+        - boto3
+
+    - name: homebrew - update homebrew and upgrade all packages
+      homebrew:
+        update_homebrew: yes
+        upgrade_all: yes
+
+  when:
+    ansible_distribution == "MacOSX"
