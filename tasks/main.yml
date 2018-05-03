@@ -11,7 +11,15 @@
         - bash_profile
         - terraformrc
 
-    - name: ssh_config
+    - name: ssh config directory
+      file:
+        path: "/Users/{{ ansible_env.USER }}/.ssh/conf.d"
+        state: directory
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0700
+
+    - name: ssh config
       copy:
         src: ssh_config 
         dest: "/Users/{{ ansible_env.USER }}/.ssh/config"

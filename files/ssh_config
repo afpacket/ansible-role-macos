@@ -1,3 +1,4 @@
+Include conf.d/*
 # https://infosec.mozilla.org/guidelines/openssh#openssh-client
 # Ensure KnownHosts are unreadable if leaked - it is otherwise easier to know which hosts your keys have access to.
 HashKnownHosts yes
