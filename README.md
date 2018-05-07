@@ -1,8 +1,8 @@
 # ansible-role-macos
 
-Ansible role for managing macOS configs. Do not run as sudo (-b)
+Ansible role for managing macOS configs. Do not run all tasks as sudo (-b)
 
-Sample playbook file:
+Sample playbook file (macos.yml):
 ```
 - hosts: localhost
   connection: local
@@ -10,3 +10,6 @@ Sample playbook file:
   roles:
     - ansible-role-macos
 ```
+
+Sample command:
+`ansible-playbook macos.yml -k -K -vv`
