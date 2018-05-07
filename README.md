@@ -12,4 +12,5 @@ Sample playbook file (macos.yml):
 ```
 
 Sample command:
+
 `ansible-playbook macos.yml -k -K -vv`
