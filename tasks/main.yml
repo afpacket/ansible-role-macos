@@ -1,7 +1,6 @@
 # Macos
 - block:
     - name: ensure not running all tasks with sudo
-      become: true
       fail:
         msg: "Do not run all tasks with sudo"
       when:
