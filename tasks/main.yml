@@ -1,9 +1,16 @@
 # Macos
 - block:
+    - name: ensure not running all tasks with sudo
+      become: true
+      fail:
+        msg: "Do not run all tasks with sudo"
+      when:
+        - ansible_env.USER == "root"
+
     - name: dot files
       copy:
         src: "{{ item }}"
-        dest: "/Users/{{ ansible_env.USER }}/.{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}"
         owner: "{{ ansible_env.USER }}"
         group: staff
         mode: 0600
@@ -11,9 +18,19 @@
         - bash_profile
         - terraformrc
 
+    - name: dot files templates
+      template:
+        src: "{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.{{ item }}"
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0600
+      with_items:
+        - ansible.cfg
+
     - name: ssh config directory
       file:
-        path: "/Users/{{ ansible_env.USER }}/.ssh/conf.d"
+        path: "{{ ansible_env.HOME }}/.ssh/conf.d"
         state: directory
         owner: "{{ ansible_env.USER }}"
         group: staff
@@ -22,7 +39,7 @@
     - name: ssh config
       copy:
         src: ssh_config 
-        dest: "/Users/{{ ansible_env.USER }}/.ssh/config"
+        dest: "{{ ansible_env.HOME }}/.ssh/config"
         owner: "{{ ansible_env.USER }}"
         group: staff
         mode: 0600
