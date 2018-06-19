@@ -53,6 +53,15 @@
         - awscli
         - boto3
 
+    - name: package - heptio-authenticator-aws
+      get_url:
+        url: "https://github.com/heptio/authenticator/releases/download/v{{ heptio_auth_aws_version }}/heptio-authenticator-aws_{{ heptio_auth_aws_version }}_darwin_amd64"
+        dest: "/usr/local/bin/heptio-authenticator-aws"
+        owner: "{{ ansible_env.USER }}"
+        group: admin
+        mode: 0755
+        checksum: "sha256:{{ heptio_auth_aws_checksum }}"
+
     - name: homebrew - update homebrew and upgrade all packages
       homebrew:
         update_homebrew: yes
