@@ -52,6 +52,7 @@
       with_items:
         - awscli
         - boto3
+        - kubernetes
 
     - name: package - heptio-authenticator-aws
       get_url:
@@ -61,6 +62,9 @@
         group: admin
         mode: 0755
         checksum: "sha256:{{ heptio_auth_aws_checksum }}"
+      tags:
+       - heptio
+       - heptio-authenticator-aws
 
     - name: homebrew - update homebrew and upgrade all packages
       homebrew:
