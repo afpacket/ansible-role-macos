@@ -48,11 +48,16 @@
       pip:
         name: "{{ item }}"
         executable: pip3
-        state: present
+        state: latest
       with_items:
         - awscli
+        - boto
         - boto3
         - kubernetes
+      tags:
+        - pip
+        - pip3
+        - python
 
     - name: package - heptio-authenticator-aws
       get_url:
