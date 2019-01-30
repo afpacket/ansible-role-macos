@@ -27,6 +27,24 @@
       with_items:
         - ansible.cfg
 
+    - name: profile.d
+      become: yes
+      file:
+        path: /etc/profile.d
+        state: directory
+        owner: root
+        group: wheel
+        mode: 0755
+
+    - name: profile
+      become: yes
+      copy:
+        src: profile
+        dest: /etc/profile
+        owner: root
+        group: wheel
+        mode: 0444
+
     - name: ssh config directory
       file:
         path: "{{ ansible_env.HOME }}/.ssh/conf.d"
