@@ -64,14 +64,9 @@
     - name: packages - pip3
       become: yes
       pip:
-        name: "{{ item }}"
+        name: ['awscli', 'boto', 'boto3', 'kubernetes', 'powerline-status']
         executable: pip3
         state: latest
-      with_items:
-        - awscli
-        - boto
-        - boto3
-        - kubernetes
       tags:
         - pip
         - pip3
