@@ -5,6 +5,7 @@
         msg: "Do not run all tasks with sudo"
       when:
         - ansible_env.USER == "root"
+      tags: always
 
     - name: dot files
       copy:
@@ -60,6 +61,26 @@
         owner: "{{ ansible_env.USER }}"
         group: staff
         mode: 0600
+
+    - name: vim - create directories
+      file:
+        path: "{{ ansible_env.HOME }}/{{ item }}"
+        state: directory
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0700
+      with_items:
+        - ".vim"
+        - ".vim/bundle"
+      tags: vim
+
+    - name: vim - clone vundle
+      git:
+        repo: "https://github.com/VundleVim/Vundle.vim.git"
+        dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+        accept_hostkey: "no"
+        version: "master"
+      tags: vim
 
     - name: packages - pip3
       become: yes
