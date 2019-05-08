@@ -17,6 +17,10 @@
       with_items:
         - bash_profile
         - terraformrc
+        - vimrc
+      tags:
+        - dotfiles
+        - vim
 
     - name: dot files templates
       template:
@@ -27,6 +31,7 @@
         mode: 0600
       with_items:
         - ansible.cfg
+      tags: dotfiles
 
     - name: profile.d
       become: yes
