@@ -89,7 +89,7 @@
 
     - name: packages - pip3
       pip:
-        name: ['awscli', 'black', 'boto', 'boto3', 'jenkins-job-wrecker', 'kubernetes', 'okta-awscli', 'powerline-status']
+        name: ['awscli', 'black', 'boto', 'boto3', 'jenkins-job-wrecker', 'inflection', 'kubernetes', 'okta-awscli', 'powerline-status']
         executable: pip3
         state: latest
         extra_args: --user
