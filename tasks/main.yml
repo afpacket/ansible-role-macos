@@ -89,14 +89,23 @@
 
     - name: packages - pip3
       pip:
-        name: ['awscli', 'black', 'boto', 'boto3', 'jenkins-job-wrecker', 'inflection', 'kubernetes', 'okta-awscli', 'powerline-status']
+        name: "{{ ansible_loop.allitems }}"
         executable: pip3
         state: latest
         extra_args: --user
-      tags:
-        - pip
-        - pip3
-        - python
+      loop_control:
+        extended: yes
+      loop:
+        - awscli
+        - black
+        - boto
+        - boto3
+        - jenkins-job-wrecker
+        - inflection
+        - kubernetes
+        - okta-awscli
+        - powerline-status
+      tags: ['pip', 'pip3', [python']
 
     - name: package - heptio-authenticator-aws
       get_url:
