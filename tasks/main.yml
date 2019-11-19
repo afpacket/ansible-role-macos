@@ -105,7 +105,7 @@
         - kubernetes
         - okta-awscli
         - powerline-status
-      tags: ['pip', 'pip3', [python']
+      tags: ['pip', 'pip3', 'python']
 
     - name: package - heptio-authenticator-aws
       get_url:
