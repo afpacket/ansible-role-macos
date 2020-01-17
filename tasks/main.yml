@@ -100,9 +100,10 @@
         - black
         - boto
         - boto3
-        - jenkins-job-wrecker
         - inflection
+        - jenkins-job-wrecker
         - kubernetes
+        - molecule
         - okta-awscli
         - powerline-status
       tags: ['pip', 'pip3', 'python']
