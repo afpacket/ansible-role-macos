@@ -61,7 +61,7 @@
 
     - name: ssh config
       copy:
-        src: ssh_config 
+        src: ssh_config
         dest: "{{ ansible_env.HOME }}/.ssh/config"
         owner: "{{ ansible_env.USER }}"
         group: staff
@@ -76,15 +76,17 @@
         mode: 0700
       with_items:
         - ".vim"
-        - ".vim/bundle"
+        - ".vim/pack"
+        - ".vim/pack/plugins"
+        - ".vim/pack/plugins/start"
       tags: vim
 
-    - name: vim - clone vundle
+    - name: vim - clone plugins
       git:
-        repo: "https://github.com/VundleVim/Vundle.vim.git"
-        dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
-        accept_hostkey: "no"
+        repo: "{{ item.value }}"
+        dest: "{{ ansible_env.HOME }}/.vim/pack/plugins/start/{{ item.key }}"
         version: "master"
+      with_dict: "{{ vim_plugin_dict }}"
       tags: vim
 
     - name: packages - pip3
