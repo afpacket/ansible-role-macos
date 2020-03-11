@@ -64,12 +64,5 @@ set t_Co=256
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" filetype detection
-augroup filetypedetect
-  au BufNewFile,BufRead *.go          setlocal filetype=go
-  au BufNewFile,BufRead *.json        setlocal filetype=json
-  au BufRead,BufNewFile *.tf,*.tfvars setlocal filetype=terraform
-augroup END
-
 " plugin options
 let g:terraform_fmt_on_save=1
