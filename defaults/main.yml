@@ -1,8 +1,0 @@
-vim_plugin_dict:
-  Jenkinsfile-vim-syntax: "https://github.com/martinda/Jenkinsfile-vim-syntax.git"
-  vim-go: "https://github.com/fatih/vim-go.git"
-  vim-hcl: "https://github.com/jvirtanen/vim-hcl.git"
-  vim-nomadproject: "https://github.com/hashivim/vim-nomadproject.git"
-  vim-packer: "https://github.com/hashivim/vim-packer.git"
-  vim-terraform: "https://github.com/hashivim/vim-terraform.git"
-  vim-vaultproject: "https://github.com/hashivim/vim-vaultproject.git"
