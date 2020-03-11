@@ -79,6 +79,17 @@
         - ".vim/bundle"
       tags: vim
 
+    - name: vim - copy supplemental file(s)
+      copy:
+        src: "{{ item }}"
+        dest: "{{ ansible_env.HOME }}/.vim/{{ item }}"
+        owner: "{{ ansible_env.USER }}"
+        group: staff
+        mode: 0600
+      with_items:
+        - filetype.vim 
+      tags: vim
+
     - name: vim - clone vundle
       git:
         repo: "https://github.com/VundleVim/Vundle.vim.git"
