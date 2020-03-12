@@ -3,7 +3,7 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-  au BufNewFile,BufRead *.go          setlocal filetype=go
-  au BufNewFile,BufRead *.json        setlocal filetype=json
-  au BufRead,BufNewFile *.tf,*.tfvars setlocal filetype=terraform
+  au BufNewFile,BufRead *.go   setlocal filetype=go
+  au BufNewFile,BufRead *.json setlocal filetype=json
+  au BufRead,BufNewFile *.hcl  setlocal filetype=terraform
 augroup END
