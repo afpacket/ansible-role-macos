@@ -17,10 +17,8 @@
       with_items:
         - bash_profile
         - terraformrc
-        - vimrc
       tags:
         - dotfiles
-        - vim
 
     - name: dot files templates
       template:
@@ -67,37 +65,6 @@
         group: staff
         mode: 0600
 
-    - name: vim - create directories
-      file:
-        path: "{{ ansible_env.HOME }}/{{ item }}"
-        state: directory
-        owner: "{{ ansible_env.USER }}"
-        group: staff
-        mode: 0700
-      with_items:
-        - ".vim"
-        - ".vim/bundle"
-      tags: vim
-
-    - name: vim - copy supplemental file(s)
-      copy:
-        src: "{{ item }}"
-        dest: "{{ ansible_env.HOME }}/.vim/{{ item }}"
-        owner: "{{ ansible_env.USER }}"
-        group: staff
-        mode: 0600
-      with_items:
-        - filetype.vim 
-      tags: vim
-
-    - name: vim - clone vundle
-      git:
-        repo: "https://github.com/VundleVim/Vundle.vim.git"
-        dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
-        accept_hostkey: "no"
-        version: "master"
-      tags: vim
-
     - name: packages - pip3
       pip:
         name: "{{ ansible_loop.allitems }}"
@@ -116,7 +83,6 @@
         - kubernetes
         - molecule
         - okta-awscli
-        - powerline-status
       tags: ['pip', 'pip3', 'python']
 
     - name: homebrew - update homebrew and upgrade all packages
