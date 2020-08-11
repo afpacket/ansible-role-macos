@@ -79,6 +79,7 @@
         - black
         - boto
         - boto3
+        - dnspython
         - inflection
         - jenkins-job-wrecker
         - kubernetes
