@@ -75,7 +75,6 @@
         extended: yes
       loop:
         - ansible-lint
-        - awscli
         - black
         - boto
         - boto3
